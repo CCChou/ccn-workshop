@@ -1,4 +1,3 @@
-target/
 tmp/
 deployments/
 !.mvn/wrapper/maven-wrapper.jar
