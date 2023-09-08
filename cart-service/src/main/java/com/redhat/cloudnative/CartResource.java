@@ -35,7 +35,11 @@ public class CartResource {
     @Inject
     ShoppingCartService shoppingCartService;
 
-    // TODO ADD getCart method
+    @GET
+    @Path("{cartId}")
+    public ShoppingCart getCart(String cartId) {
+        return shoppingCartService.getShoppingCart(cartId);
+    }
 
     @POST
     @Path("{cartId}/{itemId}/{quantity}")

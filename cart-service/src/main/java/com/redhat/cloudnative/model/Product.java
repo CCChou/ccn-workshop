@@ -1,8 +1,5 @@
 package com.redhat.cloudnative.model;
 
-import org.infinispan.protostream.annotations.ProtoFactory;
-import org.infinispan.protostream.annotations.ProtoField;
-
 public class Product {
 
     private String itemId;
@@ -14,7 +11,6 @@ public class Product {
 
     }
 
-    @ProtoFactory
     public Product(String itemId, String name, String desc, double price) {
         super();
         this.itemId = itemId;
@@ -23,7 +19,6 @@ public class Product {
         this.price = price;
     }
 
-    @ProtoField(number = 1)
     public String getItemId() {
         return itemId;
     }
@@ -31,7 +26,6 @@ public class Product {
         this.itemId = itemId;
     }
 
-    @ProtoField(number = 2)
     public String getName() {
         return name;
     }
@@ -39,7 +33,6 @@ public class Product {
         this.name = name;
     }
 
-    @ProtoField(number = 3)
     public String getDesc() {
         return desc;
     }
@@ -47,7 +40,6 @@ public class Product {
         this.desc = desc;
     }
 
-    @ProtoField(number = 4, defaultValue = "0")
     public double getPrice() {
         return price;
     }

@@ -3,9 +3,6 @@ package com.redhat.cloudnative.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.infinispan.protostream.annotations.ProtoFactory;
-import org.infinispan.protostream.annotations.ProtoField;
-
 public class ShoppingCart {
 
     private double cartItemTotal = 0.0f;
@@ -22,7 +19,6 @@ public class ShoppingCart {
         this.cartId = cartId;
     }
 
-    @ProtoFactory
     public ShoppingCart(double cartItemTotal, double cartItemPromoSavings, double shippingTotal, double shippingPromoSavings, double cartTotal, String cartId, List<ShoppingCartItem> shoppingCartItemList) {
         this.cartItemTotal = cartItemTotal;
         this.cartItemPromoSavings = cartItemPromoSavings;
@@ -33,7 +29,6 @@ public class ShoppingCart {
         this.shoppingCartItemList = shoppingCartItemList;
     }
 
-    @ProtoField(number = 1)
     public String getCartId() {
         return cartId;
     }
@@ -42,7 +37,6 @@ public class ShoppingCart {
         this.cartId = cartId;
     }
 
-    @ProtoField(number = 2, required = false)
     public List<ShoppingCartItem> getShoppingCartItemList() {
         return shoppingCartItemList;
     }
@@ -69,7 +63,6 @@ public class ShoppingCart {
         return removed;
     }
 
-    @ProtoField(number = 3, required = false, defaultValue = "0.0f")
     public double getCartItemTotal() {
         return cartItemTotal;
     }
@@ -78,7 +71,6 @@ public class ShoppingCart {
         this.cartItemTotal = cartItemTotal;
     }
 
-    @ProtoField(number = 4, required = false, defaultValue = "0.0f")
     public double getShippingTotal() {
         return shippingTotal;
     }
@@ -87,7 +79,6 @@ public class ShoppingCart {
         this.shippingTotal = shippingTotal;
     }
 
-    @ProtoField(number = 5, required = false, defaultValue = "0.0f")
     public double getCartTotal() {
         return cartTotal;
     }
@@ -96,7 +87,6 @@ public class ShoppingCart {
         this.cartTotal = cartTotal;
     }
 
-    @ProtoField(number = 6, required = false, defaultValue = "0.0f")
     public double getCartItemPromoSavings() {
         return cartItemPromoSavings;
     }
@@ -105,7 +95,6 @@ public class ShoppingCart {
         this.cartItemPromoSavings = cartItemPromoSavings;
     }
 
-    @ProtoField(number = 7, required = false, defaultValue = "0.0f")
     public double getShippingPromoSavings() {
         return shippingPromoSavings;
     }

@@ -3,8 +3,7 @@ package com.redhat.cloudnative.service;
 import com.redhat.cloudnative.model.Product;
 import com.redhat.cloudnative.model.ShoppingCart;
 import com.redhat.cloudnative.model.ShoppingCartItem;
-import io.quarkus.infinispan.client.Remote;
-import org.infinispan.client.hotrod.RemoteCache;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +23,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     private static final Logger log = LoggerFactory.getLogger(ShoppingCartServiceImpl.class);
 
-    // TODO Inject RemoteCache
+    @Inject
+    CacheService carts;
 
     @Inject
     PromotionService ps;
@@ -78,7 +78,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         for (ShoppingCartItem sci : sc.getShoppingCartItemList()) {
             Product p = getProduct(sci.getProduct().getItemId());
 
-            //if product exist, create new product to reset price
+            //if product exist, creatde new product to reset price
             if (p != null) {
                 sci.setProduct(new Product(p.getItemId(), p.getName(), p.getDesc(), p.getPrice()));
                 sci.setPrice(p.getPrice());
