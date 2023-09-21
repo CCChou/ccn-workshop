@@ -1,5 +1,4 @@
 # The CCN Roadshow(Dev Track) Module 4 Labs 2022
----
 
 This repo provides templates, generated Java codes, empty configuration for each labs that developers need to implement cloud-native microservices in workshop. 
 
@@ -13,5 +12,4 @@ The included Java projects and/or installation files are here:
 * Payment Service  - A Quarkus based FaaS with Knative 
 
 # Reference
----
 1. [The Containers and Cloud-Native Roadshow Dev Track - Module 4](http://guides-m4-labs-infra.6923.rh-us-east-1.openshiftapps.com/workshop/cloudnative/lab/workshop-environment)
