@@ -14,7 +14,7 @@ The included Java projects and/or installation files are here:
 | Payment Service | 付款服務 |
 
 ## 架構圖
-![](https://github.com/CCChou/ccn-workshop.git/blob/main/docs/01_architect.png)
+![](https://github.com/CCChou/ccn-workshop/blob/main/docs/01_architect.png)
 
 ## 環境設定
 
