@@ -8,8 +8,8 @@ The included Java projects and/or installation files are here:
 | --- | --- |
 | Coolstore UI | 商店前端頁面 |
 | Catalog Service | 產品型錄服務 |
-| Cart Service | 購物車符術 |
 | Inventory Service | 產品庫存服務 | 
+| Cart Service | 購物車服務 |
 | Order Service | 訂單服務 |
 | Payment Service | 付款服務 |
 
@@ -20,27 +20,52 @@ The included Java projects and/or installation files are here:
 
 部署 monogdb
 ```
-oc new-app --as-deployment-config --docker-image quay.io/openshiftlabs/ccn-mongo:4.0 --name=order-database
+oc new-app --image quay.io/openshiftlabs/ccn-mongo:4.0 --name=order-database
 ```
 
 部署資料庫
 - Developer Portal --> +ADD 
+    - Catalog 
+        - Service name: cataglog-database
+        - Username: catalog
+        - Password: openshift4!
+        - Database name: catalog
+    - Inventory
+        - Service name: inventory-database
+        - Username: inventory
+        - Password: openshift4!
+        - Database name: inventory
+    - Cart
+        - Service name: cart-redis
+        - Password: openshift4!
 
 部署 AMQ Stream (Kafka)
 - AMQ Stream Operator
 
-部署前端頁面
+部署各服務元件
 ```
-cd $PROJECT_SOURCE/coolstore-ui && npm install --save-dev nodeshift
-npm run nodeshift && oc expose svc/coolstore-ui
+oc new-app --image quay.io/rhtw/coolstore-ui:v1.0 --name=coolstore-ui
+oc new-app --image quay.io/rhtw/catalog:v1.3 --name=catalog
+oc new-app --image quay.io/rhtw/inventory:v1.0 --name=inventory
+oc new-app --image quay.io/rhtw/cart:v1.0 --name=cart
+oc new-app --image quay.io/rhtw/order:v1.0 --name=order
+oc new-app --image quay.io/rhtw/payment:v1.0 --name=payment
 ```
 
-部署各 service
+暴露各服務對外端點
 ```
-mvn clean package -DskipTests -f $PROJECT_SOURCE/cart-service
-mvn clean package -DskipTests -f $PROJECT_SOURCE/order-service
-mvn clean package -DskipTests -f $PROJECT_SOURCE/payment-service
-mvn clean install -Ddekorate.deploy=true -DskipTests -f $PROJECT_SOURCE/catalog-service
+oc expose svc coolstore-ui
+oc expose svc catalog
+oc expose svc inventory
+oc expose svc cart
+oc expose svc order
+oc expose svc payment
+```
+
+設定環境變數
+```
+oc set env deploy/coolstore-ui OPENSHIFT_BUILD_NAMESPACE=$(oc project -q)
+oc set env deploy/catalog INVENTORY_URL=inventory:8080
 ```
 
 # Reference
