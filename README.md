@@ -25,17 +25,17 @@ oc new-app --image quay.io/openshiftlabs/ccn-mongo:4.0 --name=order-database
 
 部署資料庫
 - Developer Portal --> +ADD 
-    - Catalog 
+    - Catalog PostgreSQL
         - Service name: cataglog-database
         - Username: catalog
         - Password: openshift4!
         - Database name: catalog
-    - Inventory
+    - Inventory PostgreSQL
         - Service name: inventory-database
         - Username: inventory
         - Password: openshift4!
         - Database name: inventory
-    - Cart
+    - Cart Redis
         - Service name: cart-redis
         - Password: openshift4!
 
