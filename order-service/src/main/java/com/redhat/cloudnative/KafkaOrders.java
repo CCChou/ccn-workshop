@@ -18,7 +18,7 @@ public class KafkaOrders {
 
     private static final Logger LOG = LoggerFactory.getLogger(KafkaOrders.class);
 
-    @Incoming("orders")
+    @Incoming("${mp.messaging.incoming.order.topic}")
     public CompletionStage<Void> onMessage(KafkaRecord<String, String> message)
             throws IOException {
 
@@ -38,7 +38,7 @@ public class KafkaOrders {
         return message.ack();
     }
 
-    @Incoming("payments")
+    @Incoming("${mp.messaging.incoming.payment.topic}")
     public CompletionStage<Void> onMessagePayments(KafkaRecord<String, String> message)
             throws IOException {
 

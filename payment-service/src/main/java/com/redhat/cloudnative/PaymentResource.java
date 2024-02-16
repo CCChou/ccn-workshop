@@ -95,7 +95,7 @@ public class PaymentResource {
     }
 
     // TODO: Add consumer method here
-    @Incoming("orders")
+    @Incoming("${mp.messaging.incoming.orders.topic}")
     public CompletionStage<Void> onMessage(KafkaRecord<String, String> message)
             throws IOException {
 
