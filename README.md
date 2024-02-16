@@ -16,6 +16,12 @@ The included Java projects and/or installation files are here:
 ## 架構圖
 ![](https://github.com/CCChou/ccn-workshop/blob/main/docs/01_architect.png)
 
+## 環境資訊
+1. OpenShift 4.14
+2. AMQ Stream 2.6.0
+3. Maven 3.8.8
+4. Java 17
+
 ## 環境設定
 
 部署 AMQ Stream (Kafka)
